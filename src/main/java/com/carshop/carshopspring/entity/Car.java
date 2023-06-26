@@ -21,10 +21,10 @@ public class Car{
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "brand_id")
-    private ClManufacturer manufacturer;
+    private Manufacturer manufacturer;
 
     @ManyToMany(mappedBy = "cars")
-    private Set<ClUser> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "characteristic_id")
@@ -43,10 +43,10 @@ public class Car{
     public String getCarName() {
         return carName;
     }
-    public ClManufacturer getManufacturer() {
+    public Manufacturer getManufacturer() {
         return manufacturer;
     }
-    public Set<ClUser> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
     public Characteristic getCharacteristic() {
@@ -62,10 +62,10 @@ public class Car{
     public void setCarName(String carName) {
         this.carName = carName;
     }
-    public void setManufacturer(ClManufacturer manufacturer) {
+    public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
-    public void setUsers(Set<ClUser> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
     public void setCharacteristic(Characteristic characteristic) {

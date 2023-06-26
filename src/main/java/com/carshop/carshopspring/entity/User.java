@@ -2,13 +2,12 @@ package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
 
-import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table (name = "user")
-public class ClUser {
+public class User {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
