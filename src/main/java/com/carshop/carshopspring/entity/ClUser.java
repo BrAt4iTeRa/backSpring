@@ -3,6 +3,8 @@ package com.carshop.carshopspring.entity;
 import jakarta.persistence.*;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "user")
@@ -17,6 +19,13 @@ public class ClUser {
     private String userName;
     @Column (name = "user_phone_number")
     private String userPhone;
+
+    @ManyToMany
+    @JoinTable(name = "orders",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id")
+    )
+    private Set<Car> cars = new HashSet<>();
 
     String getUserName() {
         return userName;

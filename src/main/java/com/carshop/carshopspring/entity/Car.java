@@ -2,6 +2,9 @@ package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table (name = "cars")
 public class Car{
@@ -10,17 +13,22 @@ public class Car{
     @Column (name = "id")
     private int carId;
 
-    @Column (name = "market_id", nullable = true)
-    private int marketId;
-
-    @Column (name = "brand_id", nullable = true)
-    private int brandId;
-
     @Column (name = "price")
     private int price;
 
     @Column (name = "car_name")
     private String carName;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "brand_id")
+    private ClManufacturer manufacturer;
+
+    @ManyToMany(mappedBy = "cars")
+    private Set<ClUser> users = new HashSet<>();
+
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "characteristic_id")
+    private Characteristic characteristic;
 
     public Car(){
 
@@ -32,22 +40,6 @@ public class Car{
 
     public void setCarId(int carId) {
         this.carId = carId;
-    }
-
-    public int getMarketId() {
-        return marketId;
-    }
-
-    public void setMarketId(int marketId) {
-        this.marketId = marketId;
-    }
-
-    public int getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(int brandId) {
-        this.brandId = brandId;
     }
 
     public int getPrice() {

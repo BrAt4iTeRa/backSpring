@@ -2,7 +2,8 @@ package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Vector;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "manufacturer")
@@ -12,9 +13,34 @@ public class ClManufacturer {
     @Column (name = "id")
     private int brandID;
 
-    @OneToMany (mappedBy = "manufacturer")
-    private Vector<Car> cars;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private Set<Car> cars = new HashSet<Car>();
+
     @Column(name = "name_brand")
     private String nameBrand;
 
+    public int getBrandID() {
+        return brandID;
+    }
+
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
+    }
+
+//    public List<Car> getCars() {
+//        return cars;
+//    }
+//
+//    public void setCars(List<Car> cars) {
+//        this.cars = cars;
+//    }
+
+    public String getNameBrand() {
+        return nameBrand;
+    }
+
+    public void setNameBrand(String nameBrand) {
+        this.nameBrand = nameBrand;
+    }
 }
