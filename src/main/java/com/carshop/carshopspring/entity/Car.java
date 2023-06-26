@@ -37,25 +37,39 @@ public class Car{
     public int getCarId() {
         return carId;
     }
+    public int getPrice() {
+        return price;
+    }
+    public String getCarName() {
+        return carName;
+    }
+    public ClManufacturer getManufacturer() {
+        return manufacturer;
+    }
+    public Set<ClUser> getUsers() {
+        return users;
+    }
+    public Characteristic getCharacteristic() {
+        return characteristic;
+    }
 
     public void setCarId(int carId) {
         this.carId = carId;
     }
-
-    public int getPrice() {
-        return price;
-    }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
-    public String getCarName() {
-        return carName;
-    }
-
     public void setCarName(String carName) {
         this.carName = carName;
+    }
+    public void setManufacturer(ClManufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+    public void setUsers(Set<ClUser> users) {
+        this.users = users;
+    }
+    public void setCharacteristic(Characteristic characteristic) {
+        this.characteristic = characteristic;
     }
 }
 

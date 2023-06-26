@@ -28,19 +28,19 @@ public class ClManufacturer {
         this.brandID = brandID;
     }
 
-//    public List<Car> getCars() {
-//        return cars;
-//    }
-//
-//    public void setCars(List<Car> cars) {
-//        this.cars = cars;
-//    }
-
     public String getNameBrand() {
         return nameBrand;
     }
 
     public void setNameBrand(String nameBrand) {
         this.nameBrand = nameBrand;
+    }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
     }
 }
