@@ -29,13 +29,11 @@ public class Car{
     @JoinColumn (name = "brand_id")
     private Manufacturer manufacturer;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_id", referencedColumnName = "id")
-    private Set<Order> orders = new HashSet<Order>();
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "characteristic_id")
     private Characteristic characteristic;
+
 
 }
 
