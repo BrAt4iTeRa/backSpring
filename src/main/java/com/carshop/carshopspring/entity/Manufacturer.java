@@ -1,10 +1,16 @@
 package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table (name = "manufacturer")
 public class Manufacturer {
@@ -20,27 +26,4 @@ public class Manufacturer {
     @Column(name = "name_brand")
     private String nameBrand;
 
-    public int getBrandID() {
-        return brandID;
-    }
-
-    public void setBrandID(int brandID) {
-        this.brandID = brandID;
-    }
-
-    public String getNameBrand() {
-        return nameBrand;
-    }
-
-    public void setNameBrand(String nameBrand) {
-        this.nameBrand = nameBrand;
-    }
-
-    public Set<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
 }

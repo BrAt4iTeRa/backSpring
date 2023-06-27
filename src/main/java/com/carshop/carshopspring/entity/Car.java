@@ -1,10 +1,16 @@
 package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table (name = "cars")
 public class Car{
@@ -23,53 +29,13 @@ public class Car{
     @JoinColumn (name = "brand_id")
     private Manufacturer manufacturer;
 
-    @ManyToMany(mappedBy = "cars")
-    private Set<User> users = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Set<Order> orders = new HashSet<Order>();
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "characteristic_id")
     private Characteristic characteristic;
 
-    public Car(){
-
-    }
-
-    public int getCarId() {
-        return carId;
-    }
-    public int getPrice() {
-        return price;
-    }
-    public String getCarName() {
-        return carName;
-    }
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-    public Set<User> getUsers() {
-        return users;
-    }
-    public Characteristic getCharacteristic() {
-        return characteristic;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
-    public void setPrice(int price) {
-        this.price = price;
-    }
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-    public void setCharacteristic(Characteristic characteristic) {
-        this.characteristic = characteristic;
-    }
 }
 

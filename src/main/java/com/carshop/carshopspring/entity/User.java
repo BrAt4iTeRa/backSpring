@@ -1,11 +1,18 @@
 package com.carshop.carshopspring.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table (name = "user")
 public class User {
     @Id
@@ -19,39 +26,8 @@ public class User {
     @Column (name = "user_phone_number")
     private String userPhone;
 
-    @ManyToMany
-    @JoinTable(name = "orders",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id")
-    )
-    private Set<Car> cars = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Set<Order> orders = new HashSet<Order>();
 
-    String getUserName() {
-        return userName;
-    }
-    String getUserEmail() {
-        return userEmail;
-    }
-    String getUserPhone(){
-        return userPhone;
-    }
-    int getUserId(){
-        return userId;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 }
